@@ -31,6 +31,7 @@ namespace DIO.Series
                         break;
                     case "C":
                     case "c":
+                        // erro so executar com Git Bash
                         Console.Clear();
                         break;
                     default:             
@@ -65,7 +66,7 @@ namespace DIO.Series
                 {
                     var excluido = serie.retornaExcluido();
 
-                    Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaId(), serie.retornaTitulo(),(excluido ? " **Indíponível**" : ""));
+                    Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaId(), serie.retornaTitulo(),(excluido ? " **Indísponível**" : ""));
                 }
             
             }          
@@ -85,25 +86,21 @@ namespace DIO.Series
             Console.WriteLine();
             int entradaGenero = int.Parse(Console.ReadLine());
             
-            if(entradaGenero == 0 && entradaGenero > 13){
-                Console.Write("Digite o título da série: ");
-                string entradaTitulo = Console.ReadLine();
+            Console.Write("Digite o título da série: ");
+            string entradaTitulo = Console.ReadLine();
 
-                Console.Write("Digite o Ano de início da série: ");
-                int entradaAno = int.Parse(Console.ReadLine());
+            Console.Write("Digite o Ano de início da série: ");
+            int entradaAno = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Digite a descrição da série: ");
-                string entradaDescricao = Console.ReadLine();
+            Console.WriteLine("Digite a descrição da série: ");
+            string entradaDescricao = Console.ReadLine();
 
-                Serie novaSerie = new Serie(id: repositorio.ProximoId(),
-                                            genero: (Genero)entradaGenero,
-                                            titulo: entradaTitulo,
-                                            ano: entradaAno,
-                                            descricao: entradaDescricao);
-                repositorio.Insere(novaSerie);
-            } else {
-                Console.Write("+ ---- Digite uma opção válida ---- +");
-            }
+            Serie novaSerie = new Serie(id: repositorio.ProximoId(),
+                                        genero: (Genero)entradaGenero,
+                                        titulo: entradaTitulo,
+                                        ano: entradaAno,
+                                        descricao: entradaDescricao);
+            repositorio.Insere(novaSerie);
         }
         private static void AtualizarSerie()
         {
